@@ -12,6 +12,7 @@ interface QuestionContextProps {
   answerQuestion: (optionValue: number) => void;
   disableNextQuestion: boolean;
   disablePrevQuestion: boolean;
+  pointsResult: ResultReferenceProps | undefined;
 }
 
 // Create Context
@@ -136,6 +137,31 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
     }
   ])
 
+  const [pointsResult, setPointsResult] = useState<ResultReferenceProps>();
+
+  const resultReferences: Array<ResultReferenceProps> = [
+    {
+      description: 'Trivial change, no risk, well understood, quick fix.',
+      value: 1,
+    },
+    {
+      description: 'Minor change, well understood but affects more areas.',
+      value: 2,
+    },
+    {
+      description: 'Average feature, can take up to half a week.',
+      value: 3,
+    },
+    {
+      description: 'Significant feature, can take up to a week, requires careful testing.',
+      value: 5,
+    },
+    {
+      description: 'High complexity, spans multiple dependencies, requires full sprint.',
+      value: 8,
+    }
+  ]
+
   // State to track current category and question
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -148,7 +174,7 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
   const currentIssue: IssueProps = {
     name: 'issue name',
   };
-  
+
   const handleNextQuestion = () => {
     if (currentQuestionIndex < currentCategory.questions.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1);
@@ -174,7 +200,7 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
       return currentCategory.questions[currentQuestionIndex + 1];
     } else if (categories[currentCategoryIndex + 1]) {
       return categories[currentCategoryIndex + 1].questions[0];
-    } 
+    }
 
     return null;
   }
@@ -185,7 +211,7 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
       return currentCategory.questions[currentQuestionIndex - 1];
     } else if (categories[currentCategoryIndex - 1]) {
       return categories[currentCategoryIndex - 1].questions[0];
-    } 
+    }
 
     return null;
   }
@@ -193,6 +219,59 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
   const changeQuestion = () => {
     setDisablePrevQuestion(!getPrevQuestion());
     setDisableNextQuestion(!getNextQuestion() || !(currentQuestion.answer));
+
+    console.log(currentCategoryIndex, categories.length - 1, 'categories' )
+    console.log(currentQuestionIndex, currentCategory.questions.length - 1, 'questions' )
+
+    if (
+      !getNextQuestion() &&
+      currentCategoryIndex === categories.length - 1 &&
+      currentQuestionIndex === currentCategory.questions.length - 1 &&
+      currentQuestion.answer
+    ) {
+
+      getResults();
+    }
+  }
+
+  const getResults = () => {
+    const results: Record<'Uncertainty' | 'Risk' | 'Complexity', number[]> = {
+      Uncertainty: [],
+      Risk: [],
+      Complexity: [],
+    };
+    
+    categories.forEach(category => {
+      if (category.name in results) {
+        results[category.name as 'Uncertainty' | 'Risk' | 'Complexity'] =
+          category.questions.map(q => q.answer || 0);
+      }
+    });
+    
+    const averages = {
+      Uncertainty: results.Uncertainty.reduce((a, b) => a + b, 0) / results.Uncertainty.length,
+      Risk: results.Risk.reduce((a, b) => a + b, 0) / results.Risk.length,
+      Complexity: results.Complexity.reduce((a, b) => a + b, 0) / results.Complexity.length
+    };
+
+    const totalScore = averages.Uncertainty + averages.Risk + averages.Complexity;
+    let resultValue = 0;
+
+    if (totalScore == 3) {
+      resultValue = 1;
+    } else if (totalScore > 3 && totalScore <= 4) {
+      resultValue = 2;
+    } else if (totalScore > 4 && totalScore <= 7) {
+      resultValue = 3;
+    } else if (totalScore > 7 && totalScore <= 9) {
+      resultValue = 5;
+    } else if (totalScore > 9 && totalScore <= 11) {
+      resultValue = 8;
+    } else {
+      resultValue = 0;
+    }
+
+    setPointsResult(resultReferences.find((resultReference) => resultReference.value === resultValue));
   }
 
   const answerQuestion = (optionValue: number) => {
@@ -220,10 +299,10 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     changeQuestion();
   }, [currentQuestionIndex, categories]);
-  
+
 
   return (
-    <QuestionContext.Provider 
+    <QuestionContext.Provider
       value={{
         currentCategory,
         currentQuestion,
@@ -234,6 +313,7 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
         answerQuestion,
         disableNextQuestion,
         disablePrevQuestion,
+        pointsResult,
       }}>
       {children}
     </QuestionContext.Provider>

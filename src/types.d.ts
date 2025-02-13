@@ -8,6 +8,11 @@ declare global {
         questions: Array<QuestionProps>
     };
 
+    interface ResultReferenceProps {
+        description: string;
+        value: number;
+    }
+
     interface IssueProps {
         name: string;
     }
