@@ -1,0 +1,71 @@
+// Neutral colors
+$white: #ffffff;
+$black: #000000;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #131313;
+
+// Secondary Colors
+$orange: #FF5C00;
+$yellow: #FFE500;
+$blue: #4200FF;
+$red: #FF1F00;
+$green: #BDFF00;
+
+// Primary and Secondary
+$accent-color: $green;
+
+// Status colors
+$success-color: $green;
+$error-color: $red;
+$warning-color: $yellow;
+$info-color: $blue;
+
+// Background colors
+$main-background: $gray-900;
+
+// Foreground colors
+$main-foreground: $gray-100;
+
+// Hairline colors
+$main-hairline: $gray-500;
+
+// Fonts
+$font-barlow: var(--font-barlow-condensed);
+$font-anton: var(--font-anton);
+$font-poppins: var(--font-poppins);
+
+$main-font: $font-anton;
+$secondary-font: $font-poppins;
+
+// Weights
+$f-weight-regular: 400;
+$f-weight-bold: 700;
+$f-weight-extra-bold: 800;
+$f-weight-black: 900;
+
+// Breakpoints
+$breakpoint-xl: 1920px;
+$breakpoint-l: 1280px;
+$breakpoint-ml: 1000px;
+$breakpoint-m: 768px;
+$breakpoint-s: 420px;
+$breakpoint-ms: 375px;
+$breakpoint-xs: 320px;
+
+// Adjusted breakpoints for media queries
+$breakpoint-xl-minus-1: 1919px;
+$breakpoint-l-minus-1: 1279px;
+$breakpoint-ml-minus-1: 999px;
+$breakpoint-m-minus-1: 767px;
+$breakpoint-s-minus-1: 419;
+
+// Transitions
+$fast-then-slow: cubic-bezier(0, 0.55, 0.45, 1);
+$slow-then-fast: cubic-bezier(0.55, 0, 1, 0.45);

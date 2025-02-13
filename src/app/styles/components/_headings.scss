@@ -1,0 +1,270 @@
+@import "../utils/variables";
+@import "../utils/functions";
+
+.heading-1 {
+  color: inherit;
+  margin: 0;
+  font-family: $main-font;
+  font-weight: $f-weight-regular;
+  text-transform: uppercase;
+
+  // Large to XL
+  @media (min-width: $breakpoint-l) {
+    font-size: #{fluid-typo(256px, 361px, $breakpoint-l, $breakpoint-xl)};
+    line-height: #{fluid-typo(304px, 428px, $breakpoint-l, $breakpoint-xl)};
+  }
+
+  // Medium to Large
+  @media (min-width: $breakpoint-m) and (max-width: $breakpoint-l-minus-1) {
+    font-size: #{fluid-typo(149px, 256px, $breakpoint-m, $breakpoint-l)};
+    line-height: #{fluid-typo(177px, 304px, $breakpoint-m, $breakpoint-l)};
+  }
+
+  // Small to Medium
+  @media (min-width: $breakpoint-s) and (max-width: $breakpoint-m-minus-1) {
+    font-size: #{fluid-typo(64px, 149px, $breakpoint-s, $breakpoint-m)};
+    line-height: #{fluid-typo(80px, 177px, $breakpoint-s, $breakpoint-m)};
+  }
+
+  // Less than small
+  @media (max-width: $breakpoint-s) {
+    font-size: #{fluid-typo(55px, 64px, $breakpoint-xs, $breakpoint-s)};
+    line-height: #{fluid-typo(67px, 80px, $breakpoint-xs, $breakpoint-s)};
+  }
+}
+
+.heading-1--bordered,
+.heading-2--bordered,
+.heading-3--bordered {
+  color: $main-background;
+  paint-order: stroke fill;
+  -webkit-text-stroke: 4px #f8f9fa;
+
+  // Small to Medium
+  @media (max-width: $breakpoint-m) {
+    -webkit-text-stroke: 3px #f8f9fa;
+  }
+}
+
+.heading-2 {
+  margin: 0;
+  color: inherit;
+  font-family: $main-font;
+  font-weight: $f-weight-regular;
+  text-transform: uppercase;
+
+  // Large to XL
+  @media (min-width: $breakpoint-l) {
+    font-size: #{fluid-typo(120px, 148px, $breakpoint-l, $breakpoint-xl)};
+    line-height: #{fluid-typo(135px, 148px, $breakpoint-l, $breakpoint-xl)};
+  }
+
+  // Medium to Large
+  @media (min-width: $breakpoint-m) and (max-width: $breakpoint-l-minus-1) {
+    font-size: #{fluid-typo(85px, 120px, $breakpoint-m, $breakpoint-l)};
+    line-height: #{fluid-typo(98px, 135px, $breakpoint-m, $breakpoint-l)};
+  }
+
+  // Small to Medium
+  @media (min-width: $breakpoint-s) and (max-width: $breakpoint-m-minus-1) {
+    font-size: #{fluid-typo(53px, 85px, $breakpoint-s, $breakpoint-m)};
+    line-height: #{fluid-typo(62px, 98px, $breakpoint-s, $breakpoint-m)};
+  }
+
+  // Less than small
+  @media (max-width: $breakpoint-s) {
+    font-size: #{fluid-typo(46px, 53px, $breakpoint-xs, $breakpoint-s)};
+    line-height: #{fluid-typo(58px, 62px, $breakpoint-xs, $breakpoint-s)};
+  }
+}
+
+.heading-3 {
+  margin: 0;
+  color: inherit;
+  font-family: $font-poppins;
+  font-weight: $f-weight-black;
+  text-transform: uppercase;
+
+  // Large
+  @media (min-width: $breakpoint-l) {
+    font-size: #{fluid-typo(64px, 74px, $breakpoint-l, $breakpoint-xl)};
+    line-height: #{fluid-typo(64px, 74px, $breakpoint-l, $breakpoint-xl)};
+  }
+
+  // Medium to Large
+  @media (min-width: $breakpoint-m) and (max-width: $breakpoint-l-minus-1) {
+    font-size: toRem(64px);
+    line-height: toRem(64px);
+  }
+
+  // Small to Medium
+  @media (min-width: $breakpoint-s) and (max-width: $breakpoint-m-minus-1) {
+    font-size: toRem(45px);
+    line-height: toRem(45px);
+  }
+
+  // Less than small
+  @media (max-width: $breakpoint-s) {
+    font-size: toRem(24px);
+    line-height: toRem(24px);
+  }
+}
+
+.heading-4 {
+  margin: 0;
+  color: inherit;
+  font-family: $font-poppins;
+  font-weight: $f-weight-black;
+  text-transform: uppercase;
+
+  // Large
+  @media (min-width: $breakpoint-l) {
+    font-size: #{fluid-typo(40px, 50px, $breakpoint-l, $breakpoint-xl)};
+    line-height: #{fluid-typo(48px, 60px, $breakpoint-l, $breakpoint-xl)};
+  }
+
+  // Medium to Large
+  @media (min-width: $breakpoint-m) and (max-width: $breakpoint-l-minus-1) {
+    font-size: toRem(32px);
+    line-height: toRem(48px);
+  }
+
+  // Small to Medium
+  @media (min-width: $breakpoint-s) and (max-width: $breakpoint-m-minus-1) {
+    font-size: toRem(24px);
+    line-height: toRem(32px);
+  }
+
+  // Less than small
+  @media (max-width: $breakpoint-s) {
+    font-size: toRem(18px);
+    line-height: toRem(25px);
+  }
+}
+
+.heading-5 {
+  margin: 0;
+  color: inherit;
+  font-family: $font-poppins;
+  font-weight: $f-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+
+  // Large
+  @media (min-width: $breakpoint-l) {
+    font-size: #{fluid-typo(20px, 25px, $breakpoint-l, $breakpoint-xl)};
+    line-height: #{fluid-typo(24px, 30px, $breakpoint-l, $breakpoint-xl)};
+  }
+
+  // Medium to Large
+  @media (min-width: $breakpoint-m) and (max-width: $breakpoint-l-minus-1) {
+    font-size: toRem(20px);
+    line-height: toRem(24px);
+  }
+
+  // Small to Medium
+  @media (min-width: $breakpoint-s) and (max-width: $breakpoint-m-minus-1) {
+    font-size: toRem(20px);
+    line-height: toRem(24px);
+  }
+
+  // Less than small
+  @media (max-width: $breakpoint-s) {
+    font-size: toRem(12px);
+    line-height: toRem(38px);
+  }
+}
+
+.body {
+  margin: 0;
+  color: inherit;
+  font-family: $font-poppins;
+  font-weight: $f-weight-regular;
+
+  // Large
+  @media (min-width: $breakpoint-l) {
+    font-size: #{fluid-typo(20px, 31px, $breakpoint-l, $breakpoint-xl)};
+    line-height: #{fluid-typo(48px, 75px, $breakpoint-l, $breakpoint-xl)};
+  }
+
+  // Medium to Large
+  @media (min-width: $breakpoint-m) and (max-width: $breakpoint-l-minus-1) {
+    font-size: toRem(20px);
+    line-height: toRem(48px);
+  }
+
+  // Small to Medium
+  @media (min-width: $breakpoint-s) and (max-width: $breakpoint-m-minus-1) {
+    font-size: toRem(20px);
+    line-height: toRem(48px);
+  }
+
+  // Less than small
+  @media (max-width: $breakpoint-s) {
+    font-size: toRem(16px);
+    line-height: toRem(36px);
+  }
+}
+
+.body-large {
+  margin: 0;
+  color: inherit;
+  font-family: $font-poppins;
+  font-weight: $f-weight-regular;
+
+  // Large
+  @media (min-width: $breakpoint-l) {
+    font-size: #{fluid-typo(32px, 36px, $breakpoint-l, $breakpoint-xl)};
+    line-height: #{fluid-typo(56px, 64px, $breakpoint-l, $breakpoint-xl)};
+  }
+
+  // Medium to Large
+  @media (min-width: $breakpoint-m) and (max-width: $breakpoint-l-minus-1) {
+    font-size: toRem(32px);
+    line-height: toRem(56px);
+  }
+
+  // Small to Medium
+  @media (min-width: $breakpoint-s) and (max-width: $breakpoint-m-minus-1) {
+    font-size: toRem(24px);
+    line-height: toRem(48px);
+  }
+
+  // Less than small
+  @media (max-width: $breakpoint-s) {
+    font-size: toRem(20px);
+    line-height: toRem(36px);
+  }
+}
+
+.button-text {
+  margin: 0;
+  color: inherit;
+  font-family: $font-poppins;
+  font-weight: $f-weight-regular;
+  text-transform: uppercase;
+  letter-spacing: toRem(3px);
+  font-size: toRem(16px);
+  line-height: toRem(24px);
+}
+
+.caption {
+  margin: 0;
+
+  color: inherit;
+  font-family: $font-poppins;
+  font-weight: $f-weight-regular;
+  text-transform: uppercase;
+  font-size: toRem(16px);
+  line-height: toRem(24px);
+}
+
+.label {
+  margin: 0;
+  color: inherit;
+  font-family: $font-poppins;
+  font-weight: $f-weight-bold;
+  text-transform: uppercase;
+  font-size: toRem(12px);
+  line-height: toRem(16px);
+}
