@@ -13,6 +13,7 @@ interface QuestionContextProps {
   disableNextQuestion: boolean;
   disablePrevQuestion: boolean;
   pointsResult: ResultReferenceProps | undefined;
+  averages: AveragesProps | undefined;
 }
 
 // Create Context
@@ -31,7 +32,7 @@ export const useQuestionContext = () => {
 export const QuestionProvider = ({ children }: { children: ReactNode }) => {
   const [categories, setCategories] = useState<Array<CategoryProps>>([
     {
-      icon_name: 'category icon name',
+      icon_name: 'uncertainty',
       name: 'Uncertainty',
       description: 'Defines how much we know about the thing to solve. Ask for a more complex description',
       order_value: 1,
@@ -64,7 +65,7 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
       ],
     },
     {
-      icon_name: 'category icon name',
+      icon_name: 'risk',
       name: 'Risk',
       description: 'How much this issue can affect or not what we currently have. Or how much does it can affect the user',
       order_value: 2,
@@ -97,7 +98,7 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
       ],
     },
     {
-      icon_name: 'category icon name',
+      icon_name: 'complexity',
       name: 'Complexity',
       description: 'Overall Effort. Could be seen as a number of parts of a process. It is a result of a composite of tasks.',
       order_value: 3,
@@ -162,6 +163,8 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
     }
   ]
 
+  const [averages, setAverages] = useState<AveragesProps>();
+
   // State to track current category and question
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -172,14 +175,14 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
   const currentQuestion = currentCategory.questions[currentQuestionIndex];
 
   const currentIssue: IssueProps = {
-    name: 'issue name',
+    name: '[Tag][Tag] Enter the name of the issue',
   };
 
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < currentCategory.questions.length - 1) {
-      setCurrentQuestionIndex((prev) => prev + 1);
-    } else if (currentCategoryIndex < categories.length - 1) {
-      setCurrentCategoryIndex((prev) => prev + 1);
+    if (currentCategory.questions[currentQuestionIndex + 1]) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } else if (categories[currentCategoryIndex + 1]) {
+      setCurrentCategoryIndex(currentCategoryIndex + 1);
       setCurrentQuestionIndex(0);
     }
   };
@@ -195,7 +198,6 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const getNextQuestion = (): QuestionProps | null => {
-    console.log()
     if (currentCategory.questions[currentQuestionIndex + 1]) {
       return currentCategory.questions[currentQuestionIndex + 1];
     } else if (categories[currentCategoryIndex + 1]) {
@@ -206,7 +208,6 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const getPrevQuestion = (): QuestionProps | null => {
-    console.log()
     if (currentCategory.questions[currentQuestionIndex - 1]) {
       return currentCategory.questions[currentQuestionIndex - 1];
     } else if (categories[currentCategoryIndex - 1]) {
@@ -219,9 +220,6 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
   const changeQuestion = () => {
     setDisablePrevQuestion(!getPrevQuestion());
     setDisableNextQuestion(!getNextQuestion() || !(currentQuestion.answer));
-
-    console.log(currentCategoryIndex, categories.length - 1, 'categories' )
-    console.log(currentQuestionIndex, currentCategory.questions.length - 1, 'questions' )
 
     if (
       !getNextQuestion() &&
@@ -271,6 +269,7 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
       resultValue = 0;
     }
 
+    setAverages(averages);
     setPointsResult(resultReferences.find((resultReference) => resultReference.value === resultValue));
   }
 
@@ -293,7 +292,9 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
       });
     });
 
-    handleNextQuestion();
+    setTimeout(() => {  
+      handleNextQuestion();
+    }, 300);
   };
 
   useEffect(() => {
@@ -314,6 +315,7 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
         disableNextQuestion,
         disablePrevQuestion,
         pointsResult,
+        averages,
       }}>
       {children}
     </QuestionContext.Provider>

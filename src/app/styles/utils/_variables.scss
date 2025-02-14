@@ -14,12 +14,15 @@ $gray-900: #131313;
 // Secondary Colors
 $orange: #FF5C00;
 $yellow: #FFE500;
+$pink: #FF0090;
 $blue: #4200FF;
 $red: #FF1F00;
 $green: #BDFF00;
 
+$light-blue: #CCD5E7;
+
 // Primary and Secondary
-$accent-color: $green;
+$accent-color: $pink;
 
 // Status colors
 $success-color: $green;
@@ -29,12 +32,14 @@ $info-color: $blue;
 
 // Background colors
 $main-background: $gray-900;
+$main-background-light: $white;
 
 // Foreground colors
 $main-foreground: $gray-100;
+$main-foreground-light: $gray-900;
 
 // Hairline colors
-$main-hairline: $gray-500;
+$main-hairline: $light-blue;
 
 // Fonts
 $font-barlow: var(--font-barlow-condensed);
@@ -46,6 +51,7 @@ $secondary-font: $font-poppins;
 
 // Weights
 $f-weight-regular: 400;
+$f-weight-medium: 500;
 $f-weight-bold: 700;
 $f-weight-extra-bold: 800;
 $f-weight-black: 900;

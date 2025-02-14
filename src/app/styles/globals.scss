@@ -1,0 +1,8 @@
+@use './components/headings';
+@use './components/buttons';
+@use './utils/variables';
+
+body {
+  background: variables.$main-background;
+  margin: 0;
+}

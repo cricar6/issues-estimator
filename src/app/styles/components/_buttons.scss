@@ -1,25 +1,25 @@
-@import "../utils/variables";
+@use "../utils/variables";
 
 .button-high-priority.button-high-priority--inversed-colors {
-  background-color: $main-foreground;
-  color: $main-background;
-  border-color: $main-background;
+  background-color: variables.$main-foreground;
+  color: variables.$main-background;
+  border-color: variables.$main-background;
 
   &::after {
-    background-color: $main-background;
+    background-color: variables.$main-background;
   }
 }
 
 .button-high-priority {
-  background-color: $main-background;
-  border: toRem(2px) solid $main-foreground;
+  background-color: variables.$main-background;
+  border: toRem(2px) solid variables.$main-foreground;
   padding: toRem(16px) toRem(24px);
   display: flex;
   width: fit-content;
   gap: toRem(20px);
-  color: $main-foreground;
-  font-family: $font-poppins;
-  font-weight: $f-weight-regular;
+  color: variables.$main-foreground;
+  font-family: variables.$font-poppins;
+  font-weight: variables.$f-weight-regular;
   text-transform: uppercase;
   letter-spacing: toRem(3px);
   font-size: toRem(16px);
@@ -29,7 +29,7 @@
   align-items: flex-end;
   cursor: pointer;
 
-  @media (max-width: $breakpoint-m-minus-1) {
+  @media (max-width: variables.$breakpoint-m-minus-1) {
     font-size: toRem(14px);
     padding: toRem(8px) toRem(16px);
   }
@@ -40,7 +40,7 @@
     width: 0%;
     height: toRem(2px);
     top: 50%;
-    background: $main-background;
+    background: variables.$main-background;
   }
 
   &::before {
@@ -49,23 +49,23 @@
 
   &::after {
     right: 2.5px;
-    background: $main-foreground;
+    background: variables.$main-foreground;
     transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
     will-change: width;
   }
 
   @media (pointer: fine) {
     &:hover {
-      background: $green;
-      color: $main-background;
-      border-color: $main-background;
+      background: variables.$green;
+      color: variables.$main-background;
+      border-color: variables.$main-background;
   
       &::before, &::after {
         width: 100%;
       }
   
       &::before {
-        background: $main-background;
+        background: variables.$main-background;
         transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);  
       }
   
@@ -78,16 +78,16 @@
 
   @media (pointer: coarse) {
     &:active {
-      background: $green;
-      color: $main-background;
-      border-color: $main-background;
+      background: variables.$green;
+      color: variables.$main-background;
+      border-color: variables.$main-background;
   
       &::before, &::after {
         width: 100%;
       }
   
       &::before {
-        background: $main-background;
+        background: variables.$main-background;
         transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);  
       }
   

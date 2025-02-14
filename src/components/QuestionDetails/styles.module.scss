@@ -1,0 +1,52 @@
+@use "../../app/styles/utils/functions";
+@use "../../app/styles/utils/variables";
+
+.QuestionDetails {
+    background: variables.$main-background-light;
+    padding: functions.toRem(35px) functions.toRem(40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: 20%;
+    gap:  17%;
+}
+
+.CategoryDescription {
+    display: flex;
+    flex-direction: column;
+    gap: functions.toRem(30px);
+
+    &__Title {
+        color: variables.$accent-color;
+    }
+}
+
+.IssueDescription {
+    display: flex;
+    flex-direction: column;
+    gap: functions.toRem(8px);
+    color: variables.$gray-600;
+    padding: functions.toRem(30px) 0;
+    margin-top: functions.toRem(30px);
+    border-top: variables.$main-hairline 1px solid;
+
+    &__Name {
+        color: variables.$gray-600;
+    }
+
+    &__Title {
+        font-weight: variables.$f-weight-medium;
+        text-transform: uppercase;
+    }
+}
+
+.IssueDescription__Name[contentEditable]:empty:before {
+    content: attr(data-placeholder);
+    color: inherit;
+    pointer-events: none;
+}
+
+.IssueDescription__Name {
+    word-break: break-word;
+}
+  

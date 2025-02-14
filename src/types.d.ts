@@ -27,6 +27,12 @@ declare global {
         options: Array<OptionProps>;
         answer?: number;
     }
+
+    interface AveragesProps {
+        Uncertainty: number;
+        Risk: number;
+        Complexity: number;
+      }      
   }
   
   export {};
