@@ -1,0 +1,23 @@
+.TextBox {
+    background: black;
+    color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    box-sizing: border-box;
+    gap: 8px;
+
+    &__Body {
+        width: 26ch;
+        min-height: 3lh;
+    }
+
+    &__Title {
+        max-width: 35ch;
+    }
+}

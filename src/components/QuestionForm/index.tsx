@@ -2,7 +2,6 @@
 
 import { useQuestionContext } from "@/app/providers/QuestionProvider";
 import styles from './styles.module.scss';
-import { useState } from "react";
 
 export interface QuestionFormProps {
     question_data: QuestionProps;
@@ -17,7 +16,7 @@ export default function QuestionForm() {
 
     return (
         <div className={styles.QuestionForm}>
-            <p className="heading-4">{currentQuestion.title}</p>
+            <p className={`${styles.QuestionForm__Title} heading-4`}>{currentQuestion.title}</p>
             {currentQuestion.options.map((question) => (
                 <button
                     key={question.title + question.value}

@@ -1,0 +1,40 @@
+@use "../../app/styles/utils/functions";
+@use "../../app/styles/utils/variables";
+
+.ProgressTracker {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    gap: functions.toRem(100px);
+    transform: translateX(-50%);
+    top: functions.toRem(100px);
+
+    &__Item {
+        width: functions.toRem(70px);
+        height: functions.toRem(70px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background-color: variables.$main-background-light;
+        color: variables.$gray-500;
+        border: variables.$main-hairline 2px solid;
+
+        &Name {
+            position: absolute;
+            top:  calc(100% + 10px);
+            left: calc(100% - 20px);
+            color: variables.$main-foreground;
+            opacity: .5;
+            font-weight: variables.$f-weight-medium;
+        }
+
+        &Selected {
+            color: variables.$main-background;
+
+            .ProgressTracker__ItemName {
+                opacity: 1;
+            }
+        }
+    }
+}

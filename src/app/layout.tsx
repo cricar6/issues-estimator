@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./styles/globals.scss";
 import { anton, barlowCondensed, poppins } from './fonts';
+import { QuestionProvider } from "./providers/QuestionProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +18,9 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${barlowCondensed.variable} ${anton.variable}`}
       >
-        {children}
+        <QuestionProvider>
+          {children}
+        </QuestionProvider>
       </body>
     </html>
   );

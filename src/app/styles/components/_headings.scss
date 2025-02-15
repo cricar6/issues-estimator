@@ -194,30 +194,30 @@
   margin: 0;
   color: inherit;
   font-family: variables.$font-poppins;
-  font-weight: variables.$f-weight-regular;
+  font-weight: variables.$f-weight-bold;
 
   // Large
   @media (min-width: variables.$breakpoint-l) {
-    font-size: #{functions.fluid-typo(32px, 36px, variables.$breakpoint-l, variables.$breakpoint-xl)};
-    line-height: #{functions.fluid-typo(56px, 64px, variables.$breakpoint-l, variables.$breakpoint-xl)};
+    font-size: #{functions.fluid-typo(28px, 34px, variables.$breakpoint-l, variables.$breakpoint-xl)};
+    line-height: #{functions.fluid-typo(34px, 42px, variables.$breakpoint-l, variables.$breakpoint-xl)};
   }
 
   // Medium to Large
   @media (min-width: variables.$breakpoint-m) and (max-width: variables.$breakpoint-l-minus-1) {
-    font-size: functions.toRem(32px);
-    line-height: functions.toRem(56px);
+    font-size: functions.toRem(24px);
+    line-height: functions.toRem(32px);
   }
 
   // Small to Medium
   @media (min-width: variables.$breakpoint-s) and (max-width: variables.$breakpoint-m-minus-1) {
-    font-size: functions.toRem(24px);
-    line-height: functions.toRem(48px);
+    font-size: functions.toRem(20px);
+    line-height: functions.toRem(28px);
   }
 
-  // Less than small
+  // Less than Small
   @media (max-width: variables.$breakpoint-s) {
-    font-size: functions.toRem(20px);
-    line-height: functions.toRem(36px);
+    font-size: functions.toRem(16px);
+    line-height: functions.toRem(22px);
   }
 }
 

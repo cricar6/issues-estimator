@@ -8,8 +8,14 @@
     justify-content: center;
     flex-direction: column;
     flex-grow: 1;
-    padding: functions.toRem(40px);
-    gap: 30px;
+    padding: functions.toRem(40px) functions.toRem(60px);
+    padding-left: functions.toRem(170px) ;
+    gap: functions.toRem(30px);
+
+    &__Title {
+        display: flex;
+        width: 100%;
+    }
 }
 
 .QuestionOption {
@@ -25,6 +31,7 @@
     position: relative;
     border: none;
     cursor: pointer;
+    text-align: initial;
 
     &Selected {
         &::before {

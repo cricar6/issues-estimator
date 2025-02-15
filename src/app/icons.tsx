@@ -8,7 +8,7 @@ import {
   
   import { IconType } from 'react-icons';
 
-  interface IIconProps {
+  export interface IconProps {
     name: string; // Define a union type for the valid names
     size?: string; // Size in form of rem: 1.5rem
   }
@@ -21,7 +21,7 @@ import {
   };
   
   // TODO: Handle external links
-  function Icon({ name, size = '1.5rem' }: IIconProps) {
+  function Icon({ name, size = '1.5rem' }: IconProps) {
     const IconComponent = iconMap[name];
   
     if (!IconComponent) {

@@ -1,4 +1,5 @@
 'use client';
+import styles from './styles.module.scss';
 
 export interface ProgressStep {
     name: string;
@@ -15,13 +16,15 @@ export default function ProgressTracker({
 }: {
     fields: ProgressTrackerProps;
 }) {
-
     return (
-        <div>
-            <p>{fields.current_step_value}</p>
-
+        <div className={styles.ProgressTracker}>
             {fields.steps.map((step) => (
-                <p key={step.name}>{step.name} {step.value}</p>
+                <div key={step.name}
+                    className={`${styles.ProgressTracker__Item} ${fields.current_step_value === step.value ? styles.ProgressTracker__ItemSelected : ""}`}
+                >
+                    <p className={`${styles.ProgressTracker__ItemValue} heading-3`}>{step.value}</p>
+                    <p className={`${styles.ProgressTracker__ItemName} heading-5`}>{step.name}</p>
+                </div>
             ))}
         </div>
     );

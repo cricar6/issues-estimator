@@ -5,6 +5,7 @@ declare global {
         description: string;
         order_value: number;
         max_question_value: number;
+        overall_quality?: string;
         questions: Array<QuestionProps>
     };
 

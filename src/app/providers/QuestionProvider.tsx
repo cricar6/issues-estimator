@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { useRouter } from 'next/navigation';
 
 interface QuestionContextProps {
   currentCategory: CategoryProps;
@@ -146,7 +147,7 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
       value: 1,
     },
     {
-      description: 'Minor change, well understood but affects more areas.',
+      description: 'Minor change, well understood but affects more areas than the 1 point issues.',
       value: 2,
     },
     {
@@ -177,6 +178,8 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
   const currentIssue: IssueProps = {
     name: '[Tag][Tag] Enter the name of the issue',
   };
+
+  const router = useRouter();
 
   const handleNextQuestion = () => {
     if (currentCategory.questions[currentQuestionIndex + 1]) {
@@ -233,12 +236,12 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const getResults = () => {
-    const results: Record<'Uncertainty' | 'Risk' | 'Complexity', number[]> = {
+    const results: Record<'Uncertainty' | 'Risk' | 'Complexity', Array<number>> = {
       Uncertainty: [],
       Risk: [],
       Complexity: [],
     };
-    
+
     categories.forEach(category => {
       if (category.name in results) {
         results[category.name as 'Uncertainty' | 'Risk' | 'Complexity'] =
@@ -271,6 +274,26 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
 
     setAverages(averages);
     setPointsResult(resultReferences.find((resultReference) => resultReference.value === resultValue));
+
+    categories.forEach(category => {
+      const categoryAverage = averages[category.name as 'Uncertainty' | 'Risk' | 'Complexity'];
+
+      if (categoryAverage) {
+        // all values in base 9
+        const normalizedValue = (categoryAverage / category.max_question_value) * 9;
+
+        // Assign quality based on the value
+        if (normalizedValue >= 1 && normalizedValue <= 3) {
+          category.overall_quality = 'Low';
+        } else if (normalizedValue > 3 && normalizedValue <= 6) {
+          category.overall_quality = 'Medium';
+        } else {
+          category.overall_quality = 'High';
+        }
+      }
+    });
+  
+    router.push('/results');
   }
 
   const answerQuestion = (optionValue: number) => {
@@ -301,6 +324,11 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
     changeQuestion();
   }, [currentQuestionIndex, categories]);
 
+  useEffect(() => {
+    if (!pointsResult) {
+      router.replace("/");
+    }
+  }, [pointsResult, router]);
 
   return (
     <QuestionContext.Provider

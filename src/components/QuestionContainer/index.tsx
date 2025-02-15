@@ -25,11 +25,11 @@ export default function QuestionContainer() {
       </div>
       <div className={styles.QuestionContainer__Form}>
         <QuestionForm />
+        <ProgressTracker fields={{
+          current_step_value: currentCategory.order_value,
+          steps: progressSteps,
+        }} />
       </div>
-      {/* <ProgressTracker fields={{
-        current_step_value: currentCategory.order_value,
-        steps: progressSteps,
-      }} /> */}
     </div>
   );
 }

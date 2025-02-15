@@ -1,0 +1,44 @@
+@use "../../app/styles/utils/functions";
+@use "../../app/styles/utils/variables";
+
+.ResultsContainer {
+    display: grid;
+    grid-template-columns: 4fr 4fr 5fr;
+    grid-template-rows: 4fr 5fr;
+    gap: 20px;
+    grid-template-areas: 
+      "div1 div1 div2"
+      "div3 div4 div5";
+
+    color: variables.$main-foreground-light;
+    background: variables.$main-background-light;
+    height: 100vh;
+    width: 100vw;
+
+    $right-difference: functions.toRem(80px);
+
+    &__Container {
+        &TopLeft {
+            grid-area: div1;
+        }
+        &TopRight {
+            grid-area: div2;
+            margin-bottom: $right-difference;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            justify-content: flex-end;
+            padding-right: 50px;
+        }
+        &BotLeft {
+            grid-area: div3;
+        }
+        &BotCenter {
+            grid-area: div4;
+        }
+        &BotRight {
+            grid-area: div5;
+            margin-top: -$right-difference;
+        }
+    }
+}

@@ -5,7 +5,7 @@
 }
 
 @function fluid-typo($min-size, $max-size, $min-bp, $max-bp, $unit: vw) {
-  $slope: ($max-size - $min-size) / ($max-bp - $min-bp);
+  $slope: math.div($max-size - $min-size, $max-bp - $min-bp);
   $slope-to-unit: $slope * 100;
   $intercept-rem: toRem($min-size - $slope * $min-bp);
   $min-size-rem: toRem($min-size);

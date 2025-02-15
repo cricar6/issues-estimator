@@ -4,6 +4,7 @@
 .QuestionDetails {
     background: variables.$main-background-light;
     padding: functions.toRem(35px) functions.toRem(40px);
+    padding-right: functions.toRem(150px);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
