@@ -25,7 +25,7 @@ export default function ResultsContainer() {
                         }} />
                     </div>
                     <div className={styles.ResultsContainer__ContainerTopRight}>
-                        <p className="body-large">{pointsResult?.value}</p>
+                        <p className="body-large">{pointsResult?.value} point/s</p>
                         <p className="body">{pointsResult?.description}</p>
                     </div>
                     <div className={styles.ResultsContainer__ContainerBotLeft}>

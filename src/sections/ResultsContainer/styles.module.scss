@@ -5,7 +5,7 @@
     display: grid;
     grid-template-columns: 4fr 4fr 5fr;
     grid-template-rows: 4fr 5fr;
-    gap: 20px;
+    gap: functions.toRem(20px);
     grid-template-areas: 
       "div1 div1 div2"
       "div3 div4 div5";
@@ -26,9 +26,11 @@
             margin-bottom: $right-difference;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: functions.toRem(16px);
             justify-content: flex-end;
-            padding-right: 50px;
+            padding-right: functions.toRem(50px);
+            padding-left: functions.toRem(30px);
+            padding-bottom: functions.toRem(20px);
         }
         &BotLeft {
             grid-area: div3;

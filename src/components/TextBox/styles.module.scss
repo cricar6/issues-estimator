@@ -1,6 +1,9 @@
+@use "../../app/styles/utils/functions";
+@use "../../app/styles/utils/variables";
+
 .TextBox {
-    background: black;
-    color: white;
+    background: variables.$main-background;
+    color: variables.$main-foreground;
     height: 100%;
     width: 100%;
     display: flex;
@@ -8,9 +11,10 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 30px;
+    padding: functions.toRem(30px);
     box-sizing: border-box;
-    gap: 8px;
+    gap: functions.toRem(16px);
+    position: relative;
 
     &__Body {
         width: 26ch;
@@ -19,5 +23,18 @@
 
     &__Title {
         max-width: 35ch;
+    }
+
+    &__Alert {
+        position: absolute;
+        bottom: functions.toRem(20px);
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 90%;
+        background: variables.$main-background-light;
+        color: variables.$main-foreground-light;
+        padding: functions.toRem(20px);
+        box-sizing: border-box;
     }
 }

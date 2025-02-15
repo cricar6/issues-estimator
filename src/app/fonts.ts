@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { Barlow_Condensed, Poppins, Anton } from 'next/font/google';
+import {  Poppins, Anton, Inter } from 'next/font/google';
 
 export const poppins = Poppins({
   subsets: ['latin'],
@@ -8,11 +8,11 @@ export const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-export const barlowCondensed = Barlow_Condensed({
+export const barlowCondensed = Inter({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['800', '900'],
-  variable: '--font-barlow-condensed',
+  weight: ['400', '500', '700', '900'],
+  variable: '--font-inter',
 });
 
 export const anton = Anton({

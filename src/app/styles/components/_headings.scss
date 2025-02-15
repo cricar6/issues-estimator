@@ -4,7 +4,7 @@
 .heading-1 {
   color: inherit;
   margin: 0;
-  font-family: variables.$main-font;
+  font-family: variables.$secondary-font;
   font-weight: variables.$f-weight-regular;
   text-transform: uppercase;
 
@@ -49,7 +49,7 @@
 .heading-2 {
   margin: 0;
   color: inherit;
-  font-family: variables.$main-font;
+  font-family: variables.$secondary-font;
   font-weight: variables.$f-weight-regular;
   text-transform: uppercase;
 
@@ -81,7 +81,7 @@
 .heading-3 {
   margin: 0;
   color: inherit;
-  font-family: variables.$font-poppins;
+  font-family: variables.$secondary-font;
   font-weight: variables.$f-weight-medium;
 
   // Large
@@ -112,7 +112,7 @@
 .heading-4 {
   margin: 0;
   color: inherit;
-  font-family: variables.$font-poppins;
+  font-family: variables.$main-font;
   font-weight: variables.$f-weight-bold;
 
   // Large
@@ -139,7 +139,7 @@
 .heading-5 {
   margin: 0;
   color: inherit;
-  font-family: variables.$font-poppins;
+  font-family: variables.$main-font;
   font-weight: variables.$f-weight-bold;
 
   // Large
@@ -166,7 +166,7 @@
 .body {
   margin: 0;
   color: inherit;
-  font-family: variables.$font-poppins;
+  font-family: variables.$main-font;
   font-weight: variables.$f-weight-regular;
 
   // Large
@@ -193,7 +193,7 @@
 .body-large {
   margin: 0;
   color: inherit;
-  font-family: variables.$font-poppins;
+  font-family: variables.$main-font;
   font-weight: variables.$f-weight-bold;
 
   // Large
@@ -224,7 +224,7 @@
 .button-text {
   margin: 0;
   color: inherit;
-  font-family: variables.$font-poppins;
+  font-family: variables.$main-font;
   font-weight: variables.$f-weight-regular;
   text-transform: uppercase;
   letter-spacing: functions.toRem(3px);
@@ -236,7 +236,7 @@
   margin: 0;
 
   color: inherit;
-  font-family: variables.$font-poppins;
+  font-family: variables.$main-font;
   font-weight: variables.$f-weight-regular;
   text-transform: uppercase;
   font-size: functions.toRem(16px);
@@ -246,7 +246,7 @@
 .label {
   margin: 0;
   color: inherit;
-  font-family: variables.$font-poppins;
+  font-family: variables.$main-font;
   font-weight: variables.$f-weight-bold;
   text-transform: uppercase;
   font-size: functions.toRem(12px);
