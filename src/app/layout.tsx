@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${barlowCondensed.variable} ${anton.variable}`}
+        className={`${poppins.variable} ${barlowCondensed.variable} ${anton.variable} body-entry-animation`}
       >
         <QuestionProvider>
           {children}

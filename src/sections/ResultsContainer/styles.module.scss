@@ -20,6 +20,10 @@
     &__Container {
         &TopLeft {
             grid-area: div1;
+            background: variables.$main-background;
+            background-image: url(../../../public/abstract4.jpg);
+            background-size: cover;
+            background-position: center;
         }
         &TopRight {
             grid-area: div2;
@@ -34,13 +38,25 @@
         }
         &BotLeft {
             grid-area: div3;
+            background: variables.$main-background;
+            background-image: url(../../../public/abstract2.jpg);
+            background-size: cover;
+            background-position: center;
         }
         &BotCenter {
             grid-area: div4;
+            background: variables.$main-background;
+            background-image: url(../../../public/abstract3.jpg);
+            background-size: cover;
+            background-position: center;
         }
         &BotRight {
             grid-area: div5;
             margin-top: -$right-difference;
+            background: variables.$main-background;
+            background-image: url(../../../public/abstract1.jpg);
+            background-size: cover;
+            background-position: center;
         }
     }
 }

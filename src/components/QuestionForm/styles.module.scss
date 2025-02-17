@@ -11,27 +11,40 @@
     padding: functions.toRem(40px) functions.toRem(60px);
     padding-left: functions.toRem(170px) ;
     gap: functions.toRem(30px);
+    background: variables.$main-background;
+    background-image: url(../../../public/abstract3.jpg);
+    background-position: center;
+    background-size: cover;
 
     &__Title {
         display: flex;
         width: 100%;
+        z-index: 1;
     }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        backdrop-filter: blur(10px);
+    }    
 }
 
 .QuestionOption {
-    color: white;
+    color: variables.$main-foreground;
     width: 100%;
-    min-height: 40px;
-    background: black;
+    min-height: functions.toRem(40px);
+    background: variables.$main-background;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 20px 30px;
+    padding: functions.toRem(36px) functions.toRem(30px);
     transition: border-color 150ms ease;
     position: relative;
     border: none;
     cursor: pointer;
     text-align: initial;
+    z-index: 1;
 
     &Selected {
         &::before {

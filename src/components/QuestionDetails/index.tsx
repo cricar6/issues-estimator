@@ -41,8 +41,15 @@ export default function QuestionDetails() {
           <p className={`${styles.IssueDescription__Title} body`}>You are estimating</p>
           <div className={`${styles.IssueDescription__Name} body`} contentEditable data-placeholder={currentIssue.name} />
         </div>
-        <button onClick={handlePrevQuestion} disabled={disablePrevQuestion}>Prev Question</button>
-        <button onClick={handleNextQuestion} disabled={disableNextQuestion}>Next Question</button>
+        
+        <button
+          onClick={handlePrevQuestion}
+          disabled={disablePrevQuestion}
+          className={`button-high-priority`}
+          >
+            Prev Question
+        </button>
+        <button  className={`button-high-priority`} onClick={handleNextQuestion} disabled={disableNextQuestion}>Next Question</button>
       </div>
     </div>
   );

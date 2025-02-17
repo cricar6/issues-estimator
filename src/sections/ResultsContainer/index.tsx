@@ -27,6 +27,7 @@ export default function ResultsContainer() {
                     <div className={styles.ResultsContainer__ContainerTopRight}>
                         <p className="body-large">{pointsResult?.value} point/s</p>
                         <p className="body">{pointsResult?.description}</p>
+                        <button className={`button-high-priority`}>Restart quiz</button>
                     </div>
                     <div className={styles.ResultsContainer__ContainerBotLeft}>
                         <TextBox fields={{

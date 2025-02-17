@@ -1,4 +1,5 @@
 @use "../utils/variables";
+@use "../utils/functions";
 
 .button-high-priority.button-high-priority--inversed-colors {
   background-color: variables.$main-foreground;
@@ -11,74 +12,38 @@
 }
 
 .button-high-priority {
-  background-color: variables.$main-background;
-  border: toRem(2px) solid variables.$main-foreground;
-  padding: toRem(16px) toRem(24px);
+  background-color: transparent;
+  border: functions.toRem(2px) solid variables.$main-foreground-light;
+  padding: functions.toRem(10px) functions.toRem(15px);
+  color: variables.$main-foreground-light;
   display: flex;
   width: fit-content;
-  gap: toRem(20px);
-  color: variables.$main-foreground;
+  gap: functions.toRem(20px);
   font-family: variables.$main-font;
   font-weight: variables.$f-weight-regular;
-  text-transform: uppercase;
-  letter-spacing: toRem(3px);
-  font-size: toRem(16px);
-  line-height: toRem(24px);
+  font-size: functions.toRem(16px);
+  line-height: functions.toRem(24px);
   text-decoration: none;
   position: relative;
   align-items: flex-end;
   cursor: pointer;
 
   @media (max-width: variables.$breakpoint-m-minus-1) {
-    font-size: toRem(14px);
-    padding: toRem(8px) toRem(16px);
+    font-size: functions.toRem(14px);
+    padding: functions.toRem(8px) functions.toRem(16px);
   }
 
-  &::before, &::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: toRem(2px);
-    top: 50%;
-    background: variables.$main-background;
-  }
-
-  &::before {
-    left: -2.5px;
-  }
-
-  &::after {
-    right: 2.5px;
-    background: variables.$main-foreground;
-    transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
-    will-change: width;
-  }
-
+  
   @media (pointer: fine) {
     &:hover {
       background: variables.$green;
       color: variables.$main-background;
       border-color: variables.$main-background;
-  
-      &::before, &::after {
-        width: 100%;
-      }
-  
-      &::before {
-        background: variables.$main-background;
-        transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);  
-      }
-  
-      &::after {
-        background: transparent;
-        transition: 0s;  
-      }
     }
   }
 
   @media (pointer: coarse) {
     &:active {
-      background: variables.$green;
       color: variables.$main-background;
       border-color: variables.$main-background;
   
@@ -104,7 +69,7 @@
   }
 
   &--expandable {
-    max-width: toRem(24px);
+    max-width: functions.toRem(24px);
     overflow: hidden;
     justify-content: flex-end;
     transition: 300ms ease;
@@ -114,13 +79,13 @@
 
     @media (pointer: fine) {
       &:hover {
-        max-width: toRem(500px);
+        max-width: functions.toRem(500px);
       }
     }
 
     @media (pointer: coarse) {
       &:active {
-        max-width: toRem(500px);
+        max-width: functions.toRem(500px);
       }
     }
   }

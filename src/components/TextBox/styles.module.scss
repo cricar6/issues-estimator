@@ -2,7 +2,6 @@
 @use "../../app/styles/utils/variables";
 
 .TextBox {
-    background: variables.$main-background;
     color: variables.$main-foreground;
     height: 100%;
     width: 100%;
@@ -30,7 +29,6 @@
         bottom: functions.toRem(20px);
         left: 50%;
         transform: translateX(-50%);
-
         width: 90%;
         background: variables.$main-background-light;
         color: variables.$main-foreground-light;
