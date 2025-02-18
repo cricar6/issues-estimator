@@ -19,18 +19,21 @@
         background-color: variables.$main-background-light;
         color: variables.$gray-500;
         border: variables.$main-hairline 2px solid;
+        opacity: .5;
 
         &Name {
             position: absolute;
             top:  calc(100% + 10px);
             left: calc(100% - 20px);
             color: variables.$main-foreground;
-            opacity: .5;
+            opacity: .3;
             font-weight: variables.$f-weight-medium;
         }
 
         &Selected {
             color: variables.$main-background;
+            border: variables.$main-background 2px solid;
+            opacity: 1;
 
             .ProgressTracker__ItemName {
                 opacity: 1;

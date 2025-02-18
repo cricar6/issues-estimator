@@ -10,6 +10,7 @@ interface QuestionContextProps {
   categoryList: Array<CategoryProps>;
   handleNextQuestion: () => void;
   handlePrevQuestion: () => void;
+  restartProvider: () => void;
   answerQuestion: (optionValue: number) => void;
   disableNextQuestion: boolean;
   disablePrevQuestion: boolean;
@@ -31,7 +32,7 @@ export const useQuestionContext = () => {
 
 // Provider Component
 export const QuestionProvider = ({ children }: { children: ReactNode }) => {
-  const [categories, setCategories] = useState<Array<CategoryProps>>([
+  const defaultCategories: Array<CategoryProps> = [
     {
       icon_name: 'uncertainty',
       name: 'Uncertainty',
@@ -137,7 +138,9 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
         }
       ],
     }
-  ])
+  ];
+
+  const [categories, setCategories] = useState<Array<CategoryProps>>([...defaultCategories])
 
   const [pointsResult, setPointsResult] = useState<ResultReferenceProps>();
 
@@ -171,7 +174,6 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [disableNextQuestion, setDisableNextQuestion] = useState(false);
   const [disablePrevQuestion, setDisablePrevQuestion] = useState(false);
-
   const currentCategory = categories[currentCategoryIndex];
   const currentQuestion = currentCategory.questions[currentQuestionIndex];
 
@@ -223,7 +225,9 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
   const changeQuestion = () => {
     setDisablePrevQuestion(!getPrevQuestion());
     setDisableNextQuestion(!getNextQuestion() || !(currentQuestion.answer));
+  }
 
+  const verifyIfShowResults = () => {
     if (
       !getNextQuestion() &&
       currentCategoryIndex === categories.length - 1 &&
@@ -296,6 +300,14 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
     router.push('/results');
   }
 
+  const restartProvider = () => {
+    setCurrentCategoryIndex(0);
+    setCurrentQuestionIndex(0);
+    setAverages(undefined);  
+    setPointsResult(undefined);
+    setCategories([...defaultCategories]);
+  }
+
   const answerQuestion = (optionValue: number) => {
     setCategories((prevCategories) => {
       return prevCategories.map((category, catIndex) => {
@@ -322,7 +334,11 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     changeQuestion();
-  }, [currentQuestionIndex, categories]);
+  }, [currentQuestionIndex]);
+
+  useEffect(() => {
+    verifyIfShowResults();
+  }, [categories]);
 
   useEffect(() => {
     if (!pointsResult) {
@@ -340,6 +356,7 @@ export const QuestionProvider = ({ children }: { children: ReactNode }) => {
         currentIssue,
         categoryList: categories,
         answerQuestion,
+        restartProvider,
         disableNextQuestion,
         disablePrevQuestion,
         pointsResult,

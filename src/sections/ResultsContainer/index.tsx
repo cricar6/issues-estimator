@@ -9,6 +9,7 @@ export default function ResultsContainer() {
         categoryList,
         pointsResult,
         currentIssue,
+        restartProvider
     } = useQuestionContext();
 
     const uncertaintyCategory = categoryList.find((category) => category.name.toLowerCase() === 'uncertainty');
@@ -27,7 +28,11 @@ export default function ResultsContainer() {
                     <div className={styles.ResultsContainer__ContainerTopRight}>
                         <p className="body-large">{pointsResult?.value} point/s</p>
                         <p className="body">{pointsResult?.description}</p>
-                        <button className={`button-high-priority`}>Restart quiz</button>
+                        <button
+                            className={`button-high-priority`}
+                            onClick={restartProvider}>
+                            Restart quiz
+                        </button>
                     </div>
                     <div className={styles.ResultsContainer__ContainerBotLeft}>
                         <TextBox fields={{
@@ -37,10 +42,10 @@ export default function ResultsContainer() {
                             },
                             body: uncertaintyCategory?.description as string,
                             alert: complexityCategory?.overall_quality === 'High' ?
-                            <p className="body">
-                                <b>WARNING! High Uncertainty</b> Are you sure you dont need a spike to reduce uncertainty
-                            </p> :
-                            undefined,
+                                <p className="body">
+                                    <b>WARNING! High Uncertainty</b> Are you sure you dont need a spike to reduce uncertainty
+                                </p> :
+                                undefined,
                         }} />
                     </div>
                     <div className={styles.ResultsContainer__ContainerBotCenter}>

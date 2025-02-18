@@ -9,7 +9,14 @@
     flex-direction: column;
     justify-content: flex-end;
     padding-top: 20%;
-    gap:  17%;
+    gap: 17%;
+
+    &__Actions {
+        display: flex;
+        gap: functions.toRem(15px);
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 }
 
 .CategoryDescription {
